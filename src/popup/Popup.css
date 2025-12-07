@@ -1,53 +1,131 @@
-@media (prefers-color-scheme: light) {
-  a:hover {
-    color: #61dafb;
+body {
+  margin: 0;
+  padding: 0;
+  width: 350px;
+  background-color: #f3f3f3;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #202124;
+    color: #e8eaed;
   }
 }
 
 main {
-  text-align: center;
-  padding: 1em;
-  margin: 0 auto;
-}
-
-h3 {
-  color: #61dafb;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 200;
-  line-height: 1.2rem;
-  margin: 2rem auto;
-}
-
-.calc {
+  padding: 12px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  & > button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid #61dafb;
-    border-radius: 0.25rem;
-    background-color: transparent;
-    color: #61dafb;
-    cursor: pointer;
-    outline: none;
+.header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #111;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+}
 
-    width: 3rem;
-    margin: 0 a;
-  }
-
-  & > label {
-    font-size: 1.5rem;
-    margin: 0 1rem;
+@media (prefers-color-scheme: dark) {
+  .header h3 {
+    color: #fff;
+    border-bottom: 1px solid #5f6368;
   }
 }
 
-a {
-  font-size: 0.5rem;
-  margin: 0.5rem;
-  color: #cccccc;
-  text-decoration: none;
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .item {
+    background: #292a2d;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+.details {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: #e8eaed;
+  }
+}
+
+.url {
+  font-size: 0.7rem;
+  color: #007185;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-color-scheme: dark) {
+  .url {
+    color: #8ab4f8;
+  }
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  color: #d00;
+  background-color: #fee;
+}
+
+@media (prefers-color-scheme: dark) {
+  .remove-btn:hover {
+    background-color: #3c4043;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .empty-state {
+    color: #9aa0a6;
+  }
 }
