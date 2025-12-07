@@ -33,6 +33,9 @@ export const Popup = () => {
   }
 
   const loadClipboard = async () => {
+    // Prevent errors if window is not focused (e.g. DevTools open)
+    if (!document.hasFocus()) return
+    
     try {
       const text = await navigator.clipboard.readText()
       const links = text.split('\n').map(l => l.trim()).filter(l => l && isAmazonLink(l))

@@ -39,8 +39,10 @@ export const SidePanel = () => {
   }
 
   const loadClipboard = async () => {
+    // Prevent errors if window is not focused
+    if (!document.hasFocus()) return
+
     try {
-      // In side panel, we might need to focus document or just try reading
       const text = await navigator.clipboard.readText()
       const links = text.split('\n').map(l => l.trim()).filter(l => l && isAmazonLink(l))
       const uniqueLinks = Array.from(new Set(links)) // Dedup
