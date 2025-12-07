@@ -1,31 +1,236 @@
-@media (prefers-color-scheme: light) {
-  a:hover {
-    color: #61dafb;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #202124;
+    color: #e8eaed;
   }
 }
 
-body {
-  min-width: 20rem;
-}
-
 main {
-  text-align: center;
-  padding: 1em;
+  padding: 40px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-h3 {
-  color: #61dafb;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 200;
-  line-height: 1.2rem;
-  margin: 2rem auto;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
 }
 
-a {
-  font-size: 0.5rem;
-  margin: 0.5rem;
-  color: #cccccc;
-  text-decoration: none;
+h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #111;
+  font-weight: 300;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+    background: #e9ecef;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header-container {
+    border-bottom: 2px solid #5f6368;
+  }
+  h3 {
+    color: #fff;
+  }
+  .subtitle {
+      background: #3c4043;
+      color: #9aa0a6;
+  }
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+    .product-card {
+        background: #292a2d;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+}
+
+.card-image-wrapper {
+    height: 200px;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.no-image {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.card-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-title {
+        color: #e8eaed;
+    }
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.card-price {
+    font-size: 1.1rem;
+    color: #b12704; /* Amazon red for price */
+    font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-price {
+        color: #ff6b6b; /* Lighter red for dark mode */
+    }
+}
+
+.card-link {
+    font-size: 0.9rem;
+    color: #007185;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-link {
+        color: #8ab4f8;
+    }
+}
+
+.card-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s;
+    opacity: 0; /* Hidden by default */
+}
+
+.product-card:hover .card-remove-btn {
+    opacity: 1;
+}
+
+.card-remove-btn:hover {
+    background: #fff0f0;
+    color: #d00;
+    border-color: #d00;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-remove-btn {
+        background: rgba(40, 40, 40, 0.9);
+        border-color: #555;
+        color: #aaa;
+    }
+    .card-remove-btn:hover {
+        background: #3c1414;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px;
+    color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+    .empty-state {
+        color: #9aa0a6;
+    }
+}
+
+.card-skeleton {
+    height: 300px;
+    background: #eee;
+    animation: pulse 1.5s infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-skeleton {
+        background: #3c4043;
+    }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
 }
