@@ -24,11 +24,10 @@ export default defineManifest({
   background: {
     service_worker: 'src/background/index.ts',
     type: 'module',
-    persistent: false,
   },
   content_scripts: [
     {
-      matches: ['*://*.amazon.com/*'],
+      matches: ['*://*.amazon.com/*', '*://*.amazon.ca/*'],
       js: ['src/contentScript/index.ts'],
     },
   ],
@@ -41,7 +40,8 @@ export default defineManifest({
       matches: [],
     },
   ],
-  permissions: ['sidePanel', 'storage', 'tabs', 'scripting', '<all_urls>'],
+  host_permissions: ['*://*.amazon.com/*', '*://*.amazon.ca/*'],
+  permissions: ['sidePanel', 'storage', 'tabs', 'scripting', 'activeTab', 'clipboardWrite', 'clipboardRead'],
   chrome_url_overrides: {
     newtab: 'newtab.html',
   },
